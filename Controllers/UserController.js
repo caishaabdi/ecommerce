@@ -4,14 +4,14 @@ import generateToken from "../Utilies/GenarateToken.js"
 export const register = async(req, res) => {
     const { name, email, password, address, phone } = req.body
 
-    const userExisit = Users.findOne({ email })
+    const userExisit = UserModel.findOne({ email })
 
     if (userExisit) {
         res.status(400).json({
             massage: 'user alredy exists'
         })
     } else {
-        const createuser = Users.create({
+        const createuser = UserModel.create({
             name,
             gamil,
             password,
@@ -41,7 +41,7 @@ export const register = async(req, res) => {
 
 export const login = async(req, res) => {
     const { email, password } = req.body;
-    const userLOgin = Users.findOne({ email })
+    const userLOgin = UserModel.findOne({ email })
 
     if (userLOgin && password == userLOgin.password) {
         res.status(200).json
