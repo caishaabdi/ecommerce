@@ -10,7 +10,7 @@ export const register = async(req, res) => {
         res.status(400).json({
             massage: 'user alredy exists'
         })
-
+    } else {
         const createuser = User.create({
             name,
             gamil,
@@ -28,13 +28,15 @@ export const register = async(req, res) => {
             address: createuser.address
             phone: createuser.phone
             token: generateToken(createuser._id)
-
         } else {
             res.status(401).json({ message: 'Invalid User Data' });
         }
 
+
     }
+
 }
+
 
 
 export const login = async(req, res) => {
