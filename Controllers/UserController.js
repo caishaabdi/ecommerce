@@ -1,17 +1,17 @@
-import User from "../Models/UserModel.js"
+import UserModel from "../Models/UserModel.js"
 import generateToken from "../Utilies/GenarateToken.js"
 
 export const register = async(req, res) => {
     const { name, email, password, address, phone } = req.body
 
-    const userExisit = User.findOne({ email })
+    const userExisit = Users.findOne({ email })
 
     if (userExisit) {
         res.status(400).json({
             massage: 'user alredy exists'
         })
     } else {
-        const createuser = User.create({
+        const createuser = Users.create({
             name,
             gamil,
             password,
@@ -41,7 +41,7 @@ export const register = async(req, res) => {
 
 export const login = async(req, res) => {
     const { email, password } = req.body;
-    const userLOgin = User.findOne({ email })
+    const userLOgin = Users.findOne({ email })
 
     if (userLOgin && password == userLOgin.password) {
         res.status(200).json
