@@ -38,7 +38,7 @@ export const register = async(req, res) => {
 
 
     } catch (error) {
-        res.status(500).json({
+        res.status(5001).json({
             error: error.message
         });
     }
