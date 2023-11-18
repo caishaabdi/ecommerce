@@ -14,7 +14,7 @@ export const register = async(req, res) => {
         } else {
             createuser = UserModel.create({
                 name,
-                gamil,
+                email,
                 password,
                 address,
                 phone,
@@ -38,7 +38,7 @@ export const register = async(req, res) => {
 
 
     } catch (error) {
-        res.status(5001).json({
+        res.status(500).json({
             error: error.message
         });
     }
