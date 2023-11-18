@@ -24,7 +24,7 @@ export const register = async(req, res) => {
                 res.status(201).json
                 _id: createuser._id;
                 name: createuser.name
-                gamil: createuser.gamil
+                email: createuser.email
                 password: createuser.password
                 address: createuser.address
                 phone: createuser.phone
@@ -54,7 +54,7 @@ export const login = async(req, res) => {
             res.status(200).json
             _id: createuser._id;
             name: createuser.name
-            gamil: createuser.gamil
+            email: createuser.email
             password: createuser.password
             address: createuser.address
             phone: createuser.phone
