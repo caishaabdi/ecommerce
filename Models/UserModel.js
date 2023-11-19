@@ -13,7 +13,7 @@ const UserSchema = mongoose.Schema({
         type: String,
         require: true
     },
-    Address: {
+    address: {
         type: String,
         require: true
     },
