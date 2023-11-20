@@ -35,15 +35,13 @@ export const register = async(req, res) => {
 
 
         }
-
-
-    } catch (error) {
-        res.status(500).json({
-            error: error.message
-        });
+    } catch (e) {
+        print(e.toString());
     }
 
-}
+};
+
+
 export const login = async(req, res) => {
 
     try {
