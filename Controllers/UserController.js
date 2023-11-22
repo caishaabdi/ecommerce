@@ -9,7 +9,7 @@ export const register = async(req, res) => {
 
         if (userExisit) {
             res.status(400).json({
-                massage: 'user alredy exists'
+                message: 'user alredy exists'
             })
         } else {
             createuser = UserModel.create({
