@@ -44,27 +44,25 @@ export const register = async(req, res) => {
 
 export const login = async(req, res) => {
 
-    try {
-        const { email, password } = req.body;
-        const userLOgin = await UserModel.findOne({ email })
+    // try {
+    const { email, password } = req.body;
+    const userLOgin = await UserModel.findOne({ email })
+    if (userLOgin && password == userLOgin.password) {
+        res.status(200).json
+        _id: createuser._id;
+        name: createuser.name
+        email: createuser.email
+        password: createuser.password
+        address: createuser.address
+        phone: createuser.phone
+        token: generateToken(userLOgin._id)
 
-        if (userLOgin && password == userLOgin.password) {
-            res.status(200).json
-            _id: createuser._id;
-            name: createuser.name
-            email: createuser.email
-            password: createuser.password
-            address: createuser.address
-            phone: createuser.phone
-            token: generateToken(userLOgin._id)
+    } else {
+        res.status(404).json({ message: 'Invalid gmail or password' });
 
-        } else {
-            res.status(404).json({ message: 'Invalid gmail or password' });
-
-        }
-    } catch (error) {
-        res.status(1500).json({
-            error: error.message
-        });
     }
+    // } catch (error) {
+    //     res.status(500).json({
+    //         error: error.message
+    //     });
 }
