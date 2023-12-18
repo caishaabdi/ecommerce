@@ -2,7 +2,7 @@ import product from "../Models/productModel.js";
 
 
 export const createproduct = async(req, res) => {
-    const { name, category, description, image, prise, countInstock } = req.body;
+    const { name, category, description, image, price, countInstock } = req.body;
 
     const product = await product.create(
 
@@ -11,7 +11,7 @@ export const createproduct = async(req, res) => {
             category,
             description,
             image,
-            prise,
+            price,
             countInstock
         }
     );
@@ -26,7 +26,7 @@ export const createproduct = async(req, res) => {
     }
 }
 export const updateproduct = async(req, res) => {
-    const { name, category, description, image, prise, countInstock } = req.body;
+    const { name, category, description, image, price, countInstock } = req.body;
 
     const product = await product.findById(req.parmas.id)
 
@@ -35,7 +35,7 @@ export const updateproduct = async(req, res) => {
         product.category = category
         product.description = description
         product.image = image
-        product.prise = prise
+        product.price = price
         product.countInstock = countInstock
 
 
