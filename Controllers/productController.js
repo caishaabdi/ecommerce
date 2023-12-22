@@ -1,6 +1,16 @@
 import product from "../Models/productModel.js";
+import product from "../Models/productModel.js";
+export const getProduct = async(req, res) => {
+    try {
+        const product = await product.find();
 
-
+        res.json(product);
+    } catch (error) {
+        res.status(500).json({
+            error: error.message
+        })
+    }
+}
 export const createproduct = async(req, res) => {
 
 
