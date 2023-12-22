@@ -2,65 +2,88 @@ import product from "../Models/productModel.js";
 
 
 export const createproduct = async(req, res) => {
-    const { name, category, description, image, price, countInstock } = req.body;
 
-    const product = await product.create(
 
-        {
-            name,
-            category,
-            description,
-            image,
-            price,
-            countInstock
+    try {
+        const { name, category, description, image, price, countInstock } = req.body;
+
+        const product = await product.create(
+
+            {
+                name,
+                category,
+                description,
+                image,
+                price,
+                countInstock
+            }
+        );
+        if (product) {
+            res.status(201).json({
+                message: 'product created'
+            })
+        } else {
+            res.status(400).json({
+                message: 'product not  created'
+            })
         }
-    );
-    if (product) {
-        res.status(201).json({
-            message: 'product created'
-        })
-    } else {
+    } catch (error) {
         res.status(500).json({
-            message: 'product not  created'
+            error: error.message
         })
     }
 }
 export const updateproduct = async(req, res) => {
-    const { name, category, description, image, price, countInstock } = req.body;
-
-    const product = await product.findById(req.parmas.id)
-
-    if (product) {
-        product.name = name
-        product.category = category
-        product.description = description
-        product.image = image
-        product.price = price
-        product.countInstock = countInstock
 
 
-    } else {
-        res.status(404).json({
-            message: ' product not found'
-        });
-    }
-    const updateproduct = await product.save();
+    try {
 
-    if (updateproduct) {
-        res.status(201).json(
-            updateproduct)
+        const { name, category, description, image, price, countInstock } = req.body;
 
+        const product = await product.findById(req.parmas.id)
+
+        if (product) {
+            product.name = name
+            product.category = category
+            product.description = description
+            product.image = image
+            product.price = price
+            product.countInstock = countInstock
+
+
+        } else {
+            res.status(404).json({
+                message: ' product not found'
+            });
+        }
+        const updateproduct = await product.save();
+
+        if (updateproduct) {
+            res.status(201).json(
+                updateproduct)
+
+        }
+    } catch (error) {
+        res.status(500).json({
+            error: error.message
+        })
     }
 }
 
 export const deleteproduct = async(req, res) => {
 
 
-    const product = await product.findByIdAndDelete(req.parmas.id)
+    try {
+        const product = await product.findByIdAndDelete(req.parmas.id)
 
-    if (product) {
-        res.status(200).json({
-            message: 'deleted product'
+        if (product) {
+            res.status(200).json({
+                message: 'deleted product'
+            })
+        }
+    } catch (error) {
+        res.status(500).json({
+            error: error.message
         })
     }
 }
