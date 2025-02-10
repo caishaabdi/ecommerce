@@ -1,6 +1,6 @@
-import product from "../Models/productModel.js";
-import product from "../Models/productModel.js";
-export const getProduct = async(req, res) => {
+
+import productModel from '../Models/productModel.js';
+export const getProduct = async (req, res) => {
     try {
         const product = await product.find();
 
@@ -11,9 +11,7 @@ export const getProduct = async(req, res) => {
         })
     }
 }
-export const createproduct = async(req, res) => {
-
-
+export const createproduct = async (req, res) => {
     try {
         const { name, category, description, image, price, countInstock } = req.body;
 
@@ -43,13 +41,9 @@ export const createproduct = async(req, res) => {
         })
     }
 }
-export const updateproduct = async(req, res) => {
-
-
+export const updateproduct = async (req, res) => {
     try {
-
         const { name, category, description, image, price, countInstock } = req.body;
-
         const product = await product.findById(req.parmas.id)
 
         if (product) {
@@ -80,7 +74,7 @@ export const updateproduct = async(req, res) => {
     }
 }
 
-export const deleteproduct = async(req, res) => {
+export const deleteproduct = async (req, res) => {
 
 
     try {
